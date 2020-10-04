@@ -3,16 +3,22 @@ import { fetchQuizQuestions } from './API'
 // Component
 import QuestionCard from './components/question-card'
 // Types
-import { Difficulty } from './API'
+import { QuestionState, Difficulty } from './API'
 
 const TOTAL_QUESTIONS = 10; 
 
+type AnswerObject = {
+  question: string;
+  answer: string;
+  correct: boolean;
+  correctAnswer: string;
 
+}
 const App = () => {
   const [loading, setLoading] = useState(false)
-  const [questions, setQuestions] = useState([])
+  const [questions, setQuestions] = useState<QuestionState[]>([])
   const [number, setNumber] = useState(0)
-  const [userAnswers, setUserAnswers] = useState([])
+  const [userAnswers, setUserAnswers] = useState<AnswerObject[]>([])
   const [score, setScore] = useState(0)
   const [gameOver, setGameOver] = useState(true)
 
